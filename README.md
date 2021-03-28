@@ -9,3 +9,4 @@ Setup:
 
 Content:
 * Starting with https://spring.io/guides/gs/spring-boot/
+* RESTful Web Services https://spring.io/guides/gs/rest-service/

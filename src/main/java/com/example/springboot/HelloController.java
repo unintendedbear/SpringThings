@@ -13,7 +13,7 @@ That is because @RestController combines @Controller and @ResponseBody, two anno
 @RestController
 public class HelloController {
 
-	@RequestMapping("/")
+	@RequestMapping("/hello")
 	public String index() {
 		return "Hello World!";
 	}
