@@ -32,6 +32,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.amqp/spring-amqp -->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-amqp</artifactId>
+			<version>2.3.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>2.3.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -39,6 +53,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.example.springboot.Application</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

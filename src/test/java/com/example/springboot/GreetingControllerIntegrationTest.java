@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,8 +33,8 @@ public class GreetingControllerIntegrationTest {
 
     @Test
     public void getGreetingNoParams() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(base.toString(),
-                String.class);
+        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         JSONObject jsonResponse = new JSONObject(response.getBody());
         assertThat(jsonResponse.get("id")).isNotNull();
         assertThat(jsonResponse.get("content")).isEqualTo("Hello World!");
@@ -44,8 +45,8 @@ public class GreetingControllerIntegrationTest {
         final String testName = "Test";
         final URL baseWithParamName = new URL("http://localhost:" + port + "/greeting?name=" + testName);
 
-        ResponseEntity<String> response = template.getForEntity(baseWithParamName.toString(),
-                String.class);
+        ResponseEntity<String> response = template.getForEntity(baseWithParamName.toString(), String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         JSONObject jsonResponse = new JSONObject(response.getBody());
         assertThat(jsonResponse.get("id")).isNotNull();
         assertThat(jsonResponse.get("content")).isEqualTo("Hello Test!");
